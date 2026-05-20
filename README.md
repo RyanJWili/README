@@ -1,12 +1,5 @@
 # Ditto documentation hub
 
-Curated architecture, diagrams, strategy, and reference material for the Ditto campus matchmaking platform. Content here is **written for navigation**—clean filenames, synthesized prose, and cross-links—not a dump of Notion export names or full repo README copies.
-
-**Mirrors:** [github.com/RyanJWili/README](https://github.com/RyanJWili/README)  
-**Upstream code org:** [dodo-world](https://github.com/dodo-world)
-
----
-
 ## Table of contents
 
 ### [Architecture](architecture/README.md)
