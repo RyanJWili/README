@@ -17,6 +17,7 @@ Curated architecture, diagrams, strategy, and reference material for the Ditto c
 | [Service catalog](architecture/service-catalog.md) | Per-service ownership |
 | [Chatbot](architecture/chatbot.md) | SMS agent in `proj-coach-backend` |
 | [Chatbot evolution](architecture/chatbot-evolution.md) | LangGraph → skills migration |
+| [Service deep dives](architecture/services/README.md) | Backend, imsg, analysis, prompts, admin UI |
 | [Matching priority](architecture/operations/matching-priority.md) | ENG-1030 tiers |
 | [Linq spam guard](architecture/operations/linq-spam-guard.md) | Line health runbook |
 
@@ -56,6 +57,8 @@ Curated architecture, diagrams, strategy, and reference material for the Ditto c
 
 - [Overview](infra/overview.md) — GKE, Terraform, CI/CD
 - [Infisical on GKE](infra/infisical-gke.md) — runtime secrets
+- [Bootstrap spec](infra/specs/bootstrap-infra-manager.md) — Infrastructure Manager setup
+- [Injector gaps spec](infra/specs/infisical-injector-gaps.md) — workload secret auth fixes
 
 ### [Reference](reference/README.md)
 

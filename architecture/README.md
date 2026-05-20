@@ -11,6 +11,17 @@ How Ditto is structured as a product and as a set of services.
 | [chatbot.md](chatbot.md) | Chatbot placement in the backend |
 | [chatbot-evolution.md](chatbot-evolution.md) | LangGraph → skills / Vercel AI SDK direction |
 
+## Services
+
+| Document | Description |
+|----------|-------------|
+| [services/README.md](services/README.md) | Index of service deep dives |
+| [services/proj-coach-backend.md](services/proj-coach-backend.md) | Core API and chatbot |
+| [services/imsg-service.md](services/imsg-service.md) | SMS/iMessage providers |
+| [services/profile-analysis-service.md](services/profile-analysis-service.md) | Scoring and Restate workflows |
+| [services/prompt-manager-backend.md](services/prompt-manager-backend.md) | Prompt CMS |
+| [services/ditto-internal-frontend.md](services/ditto-internal-frontend.md) | Admin dashboard |
+
 ## Operations
 
 | Document | Description |
