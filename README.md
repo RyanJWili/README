@@ -1,137 +1,88 @@
 # Ditto documentation hub
 
-A single index for Ditto **architecture**, **diagrams**, **strategy docs**, **matchmaking reference**, and **per-service READMEs** from the production codebase.
+Curated architecture, diagrams, strategy, and reference material for the Ditto campus matchmaking platform. Content here is **written for navigation**—clean filenames, synthesized prose, and cross-links—not a dump of Notion export names or full repo README copies.
 
-Content is aggregated from the workspace `docs/` tree, `ditto-infra`, and `projects/*`. It is documentation only—not a runnable monorepo. For behavior and APIs, use the live service repositories.
-
-**Not included:** `ditto-platform` (Nx monorepo) — not published in this bundle yet.
-
----
-
-## What is Ditto?
-
-Ditto is an AI-powered campus matchmaking product. Users interact primarily via **SMS/iMessage**; an AI chatbot handles onboarding, profile help, and match updates. Operations teams use an **internal dashboard** for matchmaking, messaging, and prompts. Infrastructure runs on **GCP (GKE)** with **MongoDB**, **Redis**, **MeiliSearch**, and **RabbitMQ**.
+**Mirrors:** [github.com/RyanJWili/README](https://github.com/RyanJWili/README)  
+**Upstream code org:** [dodo-world](https://github.com/dodo-world)
 
 ---
 
-## Documentation map
+## Table of contents
 
-```
-README.md                    ← you are here
-├── architecture/            Platform & service architecture, runbooks
-├── diagrams/                Mermaid ERDs and schema graphs
-├── docs/                    Product strategy, roadmaps, chatbot specs
-├── infra/                   Terraform / GKE / CI (ditto-infra)
-├── reference/               Matchmaking 3.x design & external refs
-└── repos/                   README copy per service repo
-```
+### [Architecture](architecture/README.md)
 
----
+| | |
+|---|---|
+| [Platform overview](architecture/platform-overview.md) | Product channels, logical stack, repository map |
+| [Service catalog](architecture/service-catalog.md) | Per-service ownership |
+| [Chatbot](architecture/chatbot.md) | SMS agent in `proj-coach-backend` |
+| [Chatbot evolution](architecture/chatbot-evolution.md) | LangGraph → skills migration |
+| [Matching priority](architecture/operations/matching-priority.md) | ENG-1030 tiers |
+| [Linq spam guard](architecture/operations/linq-spam-guard.md) | Line health runbook |
 
-## 1. Architecture
+### [Diagrams](diagrams/README.md)
 
-**Entry point:** [architecture/system-architecture-overview.md](architecture/system-architecture-overview.md)
+| | |
+|---|---|
+| [Platform topology](diagrams/platform-topology.md) | Services and data flows |
+| [Data model](diagrams/data-model.md) | Mongo entities (conceptual) |
+| [SMS pipeline](diagrams/sms-pipeline.md) | Inbound/outbound messaging |
+| [Match state machine](diagrams/match-state-machine.md) | Match lifecycle |
+| [Chatbot routing](diagrams/chatbot-routing.md) | Intent → skill/tool path |
 
-| Link | Description |
-|------|-------------|
-| [architecture/README.md](architecture/README.md) | Full index |
-| [architecture/ditto-internal-frontend.md](architecture/ditto-internal-frontend.md) | Admin UI structure |
-| [architecture/profile-analysis-service.md](architecture/profile-analysis-service.md) | Profile analysis service |
-| [architecture/proj-coach-langgraph-migration.md](architecture/proj-coach-langgraph-migration.md) | Chatbot migration (LangGraph → skills) |
-| Runbooks under `architecture/` | Rollouts, Linq guard, chatbot state, ENG notes |
+### [Docs](docs/README.md)
 
-**ASCII overview (high level):**
+**Strategy**
 
-```
-Users (SMS/iMessage) → imsg-service → proj-coach-backend ←→ MongoDB / Redis / MeiliSearch
-                              ↑              ↓
-                    ditto-internal-frontend   RabbitMQ → profile-analysis, delayed-task, prompt-manager
-Admin (browser) ───────────────────────────── ditto-internal-ws
-```
+- [Q2 roadmap](docs/strategy/q2-roadmap.md)
+- [Monorepo RFC summary](docs/strategy/monorepo-rfc-summary.md)
+- [Monorepo migration summary](docs/strategy/monorepo-migration-summary.md)
+- [Claude governance summary](docs/strategy/claude-governance-summary.md)
 
----
+**Chatbot**
 
-## 2. Diagrams
+- [System overview](docs/chatbot/system-overview.md)
+- [Production audit](docs/chatbot/production-audit.md)
+- [Onboarding](docs/chatbot/onboarding.md)
+- [Skills migration](docs/chatbot/skills-migration.md)
+- [Yik Yak event](docs/chatbot/yak-event.md)
+- [Outbound latency](docs/chatbot/outbound-latency.md)
 
-**Index:** [diagrams/README.md](diagrams/README.md)
+**Integrations**
 
-| Link | Description |
-|------|-------------|
-| [diagrams/proj-coach-schemas-architecture.md](diagrams/proj-coach-schemas-architecture.md) | Service graph + MongoDB collections (Mermaid) |
-| [diagrams/ufl-erd.md](diagrams/ufl-erd.md) | UFL / `sms_chat_segments` ERD (Mermaid) |
+- [OpenClaw](docs/integrations/openclaw.md)
 
-These diagrams match the current schema packages in `proj-coach-schemas` and the UFL tool. Open in GitHub preview or VS Code Mermaid support.
+### [Infrastructure](infra/README.md)
 
----
+- [Overview](infra/overview.md) — GKE, Terraform, CI/CD
+- [Infisical on GKE](infra/infisical-gke.md) — runtime secrets
 
-## 3. Strategy & product docs
+### [Reference](reference/README.md)
 
-**Index:** [docs/README.md](docs/README.md)
+- [Matchmaking 3.x summary](reference/matchmaking/engine-3x-summary.md)
+- [Implementation plan summary](reference/matchmaking/implementation-plan-summary.md)
+- [Technical review notes](reference/matchmaking/technical-review-notes.md)
 
-| Priority | Document |
-|----------|----------|
-| Roadmap | [docs/q2-roadmap-and-initiatives.md](docs/q2-roadmap-and-initiatives.md) |
-| Monorepo RFC | [docs/rfc-monorepo-driven-development.md](docs/rfc-monorepo-driven-development.md) |
-| Chatbot audit | [docs/chatbot-pipeline-production-issues.md](docs/chatbot-pipeline-production-issues.md) |
-| Onboarding | [docs/conversational-onboarding-agent.md](docs/conversational-onboarding-agent.md) |
-| Latency RCA | [docs/outbound-message-latency-rca.md](docs/outbound-message-latency-rca.md) |
+### [Repositories](repos/README.md)
+
+Service catalog with GitHub links—install and run instructions stay in each repo’s own README.
 
 ---
 
-## 4. Infrastructure
+## What is intentionally excluded
 
-**Index:** [infra/README.md](infra/README.md)
-
-| Link | Description |
-|------|-------------|
-| [infra/gcp-architecture.md](infra/gcp-architecture.md) | GCP topology, GKE, peering, Infisical |
-| [infra/ditto-infra-README.md](infra/ditto-infra-README.md) | Repo setup and Cloud Build triggers |
-
----
-
-## 5. Matchmaking reference
-
-**Index:** [reference/README.md](reference/README.md)
-
-| Link | Description |
-|------|-------------|
-| [reference/ditto-matchmaking/matchmaking-engine-3x.md](reference/ditto-matchmaking/matchmaking-engine-3x.md) | Engine 3.x |
-| [reference/ditto-matchmaking/proposed-strategy-implementation-plan.md](reference/ditto-matchmaking/proposed-strategy-implementation-plan.md) | Strategy + implementation plan |
+| Excluded | Reason |
+|----------|--------|
+| `platform/` (ditto-platform) | Monorepo not submitted to this bundle |
+| `findings/` (Mongo analytics) | Operational research, not product architecture |
+| Raw Notion filenames | Replaced by the paths above |
+| Full README copies | Avoid drift and secret leakage from dev examples |
 
 ---
 
-## 6. Service repositories
+## How to extend this hub
 
-**Index:** [repos/INDEX.md](repos/INDEX.md)
-
-Each service has a copied README under `repos/<name>-README.md` (e.g. [proj-coach-backend](repos/proj-coach-backend-README.md)).
-
----
-
-## Recommended reading order
-
-1. [architecture/system-architecture-overview.md](architecture/system-architecture-overview.md) — how the system fits together  
-2. [diagrams/proj-coach-schemas-architecture.md](diagrams/proj-coach-schemas-architecture.md) — data model and service edges  
-3. [docs/q2-roadmap-and-initiatives.md](docs/q2-roadmap-and-initiatives.md) — current priorities  
-4. [reference/ditto-matchmaking/proposed-strategy-implementation-plan.md](reference/ditto-matchmaking/proposed-strategy-implementation-plan.md) — matchmaking direction  
-5. [infra/gcp-architecture.md](infra/gcp-architecture.md) — where it runs  
-
----
-
-## Maintenance
-
-When source docs change in the workspace, re-copy into this repo and keep filenames stable (see section indexes). Do not commit API keys or `.tfvars`; example config in service READMEs should use placeholders only.
-
-```bash
-cp ../docs/*.md docs/   # then re-apply renames if needed
-git add -A && git commit -m "docs: sync from workspace"
-git push origin main
-```
-
----
-
-## Excluded
-
-- Full `docs/REFER/ohl-platform/` clone (thousands of third-party files) — one overview only under `reference/`  
-- `ditto-platform` monorepo until submitted  
-- Secrets, `.env`, Terraform state, `node_modules`
+1. Add a short synthesized doc under the right folder (`architecture/`, `docs/`, `reference/`, etc.).  
+2. Link it from the section `README.md` and from this file.  
+3. Prefer diagrams in `diagrams/` when a picture helps more than prose.  
+4. Never commit API keys—reference Infisical paths in infra docs only.

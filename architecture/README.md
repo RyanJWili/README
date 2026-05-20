@@ -1,22 +1,23 @@
-# Architecture & runbooks
+# Architecture
 
-## Platform
+How Ditto is structured as a product and as a set of services.
 
-| Document | Summary |
-|----------|---------|
-| [system-architecture-overview.md](system-architecture-overview.md) | **Start here** — all services, data stores, queues, local dev |
-| [ditto-internal-frontend.md](ditto-internal-frontend.md) | Internal admin app routing and structure |
-| [profile-analysis-service.md](profile-analysis-service.md) | Profile analysis microservice architecture |
-| [proj-coach-langgraph-migration.md](proj-coach-langgraph-migration.md) | LangGraph → skills migration notes |
+## Documents
 
-## Backend runbooks & design notes
+| Document | Description |
+|----------|-------------|
+| [platform-overview.md](platform-overview.md) | End-to-end platform: channels, backend, data stores |
+| [service-catalog.md](service-catalog.md) | One-line ownership per repository |
+| [chatbot.md](chatbot.md) | Chatbot placement in the backend |
+| [chatbot-evolution.md](chatbot-evolution.md) | LangGraph → skills / Vercel AI SDK direction |
 
-| Document | Summary |
-|----------|---------|
-| [chatbot-state-source-of-truth.md](chatbot-state-source-of-truth.md) | Chatbot state ownership |
-| [cloud-storage-di-refactor.md](cloud-storage-di-refactor.md) | Cloud storage DI refactor |
-| [user-profile-and-image-update-points.md](user-profile-and-image-update-points.md) | Profile/image update flow |
-| [ethnicity-rollout-runbook.md](ethnicity-rollout-runbook.md) | Ethnicity field rollout |
-| [expected-gender-rollout-runbook.md](expected-gender-rollout-runbook.md) | Expected gender normalization rollout |
-| [linq-line-spam-guard-runbook.md](linq-line-spam-guard-runbook.md) | Linq line spam guard |
-| [eng1030.md](eng1030.md) | ENG-1030 engineering note |
+## Operations
+
+| Document | Description |
+|----------|-------------|
+| [operations/matching-priority.md](operations/matching-priority.md) | ENG-1030 tiered matching priority |
+| [operations/linq-spam-guard.md](operations/linq-spam-guard.md) | iMessage line health runbook |
+
+## Diagrams
+
+Visual flows live under [../diagrams/](../diagrams/).

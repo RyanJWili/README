@@ -1,10 +1,13 @@
 # Diagrams
 
-Mermaid diagrams extracted from service repos. Render on GitHub or any Mermaid-capable viewer.
+Mermaid and ASCII diagrams for onboarding and design reviews. Each file is self-contained.
 
-| File | Description |
-|------|-------------|
-| [proj-coach-schemas-architecture.md](proj-coach-schemas-architecture.md) | MongoDB collections, relationships, and service dependency graph (`@dodo-world/proj-coach-schemas`) |
-| [ufl-erd.md](ufl-erd.md) | Entity-relationship diagram for UFL segment analysis (`sms_chat_segments`, taxonomy collections) |
+| Diagram | File |
+|---------|------|
+| Platform topology | [platform-topology.md](platform-topology.md) |
+| Core data model | [data-model.md](data-model.md) |
+| SMS send path | [sms-pipeline.md](sms-pipeline.md) |
+| Match lifecycle | [match-state-machine.md](match-state-machine.md) |
+| Chatbot routing | [chatbot-routing.md](chatbot-routing.md) |
 
-Additional Mermaid figures appear inside [docs/rfc-monorepo-driven-development.md](../docs/rfc-monorepo-driven-development.md) and other strategy docs.
+Narrative context: [../architecture/platform-overview.md](../architecture/platform-overview.md).

@@ -1,15 +1,13 @@
-# Reference material
+# Reference
 
-## Ditto matchmaking (3.x)
+Long-form strategy distilled into readable summaries.
 
-| Document | Summary |
-|----------|---------|
-| [matchmaking-engine-3x.md](ditto-matchmaking/matchmaking-engine-3x.md) | Matchmaking Engine 3.x overview |
-| [proposed-strategy-implementation-plan.md](ditto-matchmaking/proposed-strategy-implementation-plan.md) | Proposed strategy and technical implementation |
-| [matchmaking-3x-technical-review.md](ditto-matchmaking/matchmaking-3x-technical-review.md) | Technical review comments |
+## Matchmaking
 
-## External comparison (optional)
+| Document | Description |
+|----------|-------------|
+| [matchmaking/engine-3x-summary.md](matchmaking/engine-3x-summary.md) | Matchmaking Engine 3.x vision |
+| [matchmaking/implementation-plan-summary.md](matchmaking/implementation-plan-summary.md) | Phased evidence-based plan |
+| [matchmaking/technical-review-notes.md](matchmaking/technical-review-notes.md) | Review themes and open questions |
 
-| Document | Summary |
-|----------|---------|
-| [ohl-platform-overview.md](ohl-platform-overview.md) | OHL unified messaging platform overview (reference architecture only; not part of Ditto) |
+Diagrams: [../diagrams/match-state-machine.md](../diagrams/match-state-machine.md).
