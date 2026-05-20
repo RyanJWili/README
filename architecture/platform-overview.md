@@ -88,6 +88,7 @@ Users map to a **school** via email domain (`schools` collection, `febLaunchStat
 ## Related documents
 
 - [Service catalog](service-catalog.md) — responsibilities per repo
+- [Service deep dives](services/README.md) — backend, imsg, analysis, prompts, admin UI
 - [Chatbot](chatbot.md) — runtime behavior
 - [../diagrams/platform-topology.md](../diagrams/platform-topology.md) — Mermaid topology
 - [../infra/overview.md](../infra/overview.md) — GCP deployment

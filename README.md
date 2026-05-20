@@ -28,7 +28,7 @@ Curated architecture, diagrams, strategy, and reference material for the Ditto c
 | [Platform topology](diagrams/platform-topology.md) | Services and data flows |
 | [Data model](diagrams/data-model.md) | Mongo entities (conceptual) |
 | [SMS pipeline](diagrams/sms-pipeline.md) | Inbound/outbound messaging |
-| [Match state machine](diagrams/match-state-machine.md) | Match lifecycle |
+| [Match state machine](diagrams/match-state-machine.md) | User status + match workflow |
 | [Chatbot routing](diagrams/chatbot-routing.md) | Intent → skill/tool path |
 
 ### [Docs](docs/README.md)
@@ -40,7 +40,7 @@ Curated architecture, diagrams, strategy, and reference material for the Ditto c
 - [Monorepo migration summary](docs/strategy/monorepo-migration-summary.md)
 - [Claude governance summary](docs/strategy/claude-governance-summary.md)
 
-**Chatbot**
+**Chatbot** — [index](docs/chatbot/README.md)
 
 - [System overview](docs/chatbot/system-overview.md)
 - [Production audit](docs/chatbot/production-audit.md)
@@ -61,6 +61,8 @@ Curated architecture, diagrams, strategy, and reference material for the Ditto c
 - [Injector gaps spec](infra/specs/infisical-injector-gaps.md) — workload secret auth fixes
 
 ### [Reference](reference/README.md)
+
+**Matchmaking** — [index](reference/matchmaking/README.md)
 
 - [Matchmaking 3.x summary](reference/matchmaking/engine-3x-summary.md)
 - [Implementation plan summary](reference/matchmaking/implementation-plan-summary.md)

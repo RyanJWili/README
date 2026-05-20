@@ -22,7 +22,7 @@ Ditto’s conversational AI runs inside **proj-coach-backend**, orchestrating SM
 
 ## Agents (production)
 
-Onboarding, General, Match, Profile improvement, Yak—routed once per turn. See [../../diagrams/chatbot-routing.md](../../diagrams/chatbot-routing.md).
+Onboarding, General, Match, Profile improvement, Yak—routed once per turn (onboarding before pool checks). `InReview` shares the profile-improvement path. See [../../diagrams/chatbot-routing.md](../../diagrams/chatbot-routing.md) and [../../diagrams/match-state-machine.md](../../diagrams/match-state-machine.md).
 
 ## Data
 

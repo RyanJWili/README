@@ -28,6 +28,11 @@ Summary of the full pipeline review. Use this as a remediation backlog, not as r
 4. **Caching** — timezone and school metadata  
 5. **Outbound reliability** — retry policy for imsg RPC  
 
+## Related diagrams
+
+- [../../diagrams/sms-pipeline.md](../../diagrams/sms-pipeline.md) — ingress path where C1–C6 occur  
+- [../../diagrams/chatbot-routing.md](../../diagrams/chatbot-routing.md) — agent selection (C5)  
+
 ## Testing recommendations
 
 - Integration tests for multi-burst SMS ordering (drain loop)  

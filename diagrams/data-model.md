@@ -5,11 +5,18 @@ Logical MongoDB collections and relationships (from `@dodo-world/proj-coach-sche
 ```mermaid
 erDiagram
   users ||--o{ user_profiles : has
+  users ||--o{ matching_statuses : has_history
   users ||--o{ sms_chats : has
   users ||--o{ matchings : participates
   users }o--|| schools : belongs_to
   sms_chats ||--o{ sms_chat_messages : contains
+  matchings ||--o{ matching_histories : tracks
   matchings ||--o{ match_approvals : may_have
+  matching_statuses {
+    ObjectId userId FK
+    string status
+    boolean active
+  }
   schools {
     string code PK
     string name
@@ -37,9 +44,12 @@ erDiagram
   }
 ```
 
-## Match status (simplified)
+## Status fields (do not merge)
 
-Typical progression: matching proposed → scheduling → contact exchanged → dated. Failure states include refused, expired, pick-time failed. See [match-state-machine.md](match-state-machine.md).
+- **`matching_statuses.status`** — per-user eligibility (`Waiting`, `Matched`, `NeedMoreInfo`, …). Drives chatbot routing.  
+- **`matchings.status`** — per-pair workflow (`Making Poster`, `TimeScheduled 1/2`, `Dated`, `PickTimeFailed`, …).  
+
+Full enums and diagrams: [match-state-machine.md](match-state-machine.md).
 
 ## Schools
 

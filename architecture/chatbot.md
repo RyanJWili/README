@@ -1,6 +1,6 @@
 # Chatbot system
 
-The Ditto chatbot is the primary AI surface for users on SMS/iMessage. It onboard profiles, answers questions, and supports match-related flows. Implementation lives in `proj-coach-backend` (`chatbot`, `sms-chat`, `llm-tools` modules).
+The Ditto chatbot is the primary AI surface for users on SMS/iMessage. It onboards users, answers questions, and supports match-related flows. Implementation lives in `proj-coach-backend` (`chatbot`, `sms-chat`, `llm-tools` modules).
 
 ## Inbound path
 
@@ -11,15 +11,17 @@ The Ditto chatbot is the primary AI surface for users on SMS/iMessage. It onboar
 
 ## Agent routing (LangGraph, production)
 
-After profile and messages load, **one-shot** routing selects an agent for the turn:
+After profile and messages load, **one-shot** routing selects an agent for the turn (order matters):
 
-| Condition | Agent |
-|-----------|--------|
-| Pool includes `yik-yak` | Yak agent |
-| Onboarding incomplete | Onboarding agent |
-| User status `Matched` / active match | Match agent (+ match context) |
-| Status `NeedMoreInfo` | Profile improvement agent |
-| Default | General agent |
+| Order | Condition | Agent |
+|-------|-----------|--------|
+| 1 | Onboarding incomplete or status `N/A` | Onboarding agent |
+| 2 | `activePool === yik-yak` | Yak agent |
+| 3 | User status `Matched` or `matchId` set | Match agent (+ match context) |
+| 4 | Status `NeedMoreInfo` or `InReview` | Profile improvement agent |
+| 5 | Default | General agent |
+
+User status comes from active `matching_statuses` document—not `matchings.status`. See [../diagrams/match-state-machine.md](../diagrams/match-state-machine.md).
 
 Each agent loop: model call → tools (up to 10 iterations) → `sendResponse`. Outbound text is split and sent via `imsg-service`; responses suppressed if the user sent newer messages during the run.
 

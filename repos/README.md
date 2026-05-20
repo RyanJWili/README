@@ -49,6 +49,12 @@ Personal mirrors: [github.com/RyanJWili](https://github.com/RyanJWili). Upstream
 |------------|-------|----------------|
 | [ufl](https://github.com/RyanJWili/ufl) | Python | SMS chat segmentation / taxonomy analysis |
 
+## Tooling
+
+| Repository | Stack | Responsibility |
+|------------|-------|----------------|
+| [claude-marketplace](https://github.com/RyanJWili/claude-marketplace) | Markdown / plugins | Shared Claude Code plugins and commit commands |
+
 ## External / not mirrored here
 
 | Name | Notes |

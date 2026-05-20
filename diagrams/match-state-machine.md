@@ -1,27 +1,82 @@
-# Match lifecycle
+# Match and user status
 
-Simplified state machine for a `matchings` document. Exact enum names live in `proj-coach-schemas`; ops tooling may show additional substates.
+Ditto uses **two different status concepts**. Confusing them breaks chatbot routing and ops reporting.
+
+| Concept | Collection | Used for |
+|---------|------------|----------|
+| **User matching status** | `matching_statuses` (active row per user) | Chatbot agent routing, eligibility to be matched |
+| **Match workflow status** | `matchings.status` | Lifecycle of one pair from creation to date or failure |
+
+Source of truth for enums: `@dodo-world/proj-coach-schemas`.
+
+---
+
+## User matching status (`matching_statuses`)
+
+Current status = document with `{ userId, active: true }`. History kept in prior rows with `active: false`.
 
 ```mermaid
 stateDiagram-v2
-  [*] --> Matched: pair created
-  Matched --> PickTimeFailed: scheduling fails
-  Matched --> ContactExchanged: both confirm / exchange
-  ContactExchanged --> Dated: date completed
-  Matched --> Failed: refused / expired
-  PickTimeFailed --> Failed
-  Dated --> [*]
-  Failed --> [*]
+  [*] --> NA: signup
+  NA --> InReview: onboarding complete
+  InReview --> Waiting: profile OK
+  InReview --> NeedMoreInfo: gaps found
+  NeedMoreInfo --> Waiting: profile fixed
+  Waiting --> Matched: paired
+  Matched --> Waiting: match ends
+  Waiting --> Paused: user pause
+  Paused --> Waiting: resume
+  NA --> Underage: age fail
+  Waiting --> Banned: moderation
+  Waiting --> Deactivated: account off
 ```
 
-## Operations meaning
+| Status | Meaning |
+|--------|---------|
+| `N/A` | Not finished onboarding |
+| `InReview` | Onboarding done; profile analysis pending |
+| `NeedMoreInfo` | Profile improvement agent should run |
+| `Waiting` | Eligible for next match |
+| `Matched` | In an active match (chatbot → match agent) |
+| `Paused` | Temporarily out of pool |
+| `Banned` / `Deactivated` / `Underage` | Not operable |
 
-| State | Typical meaning |
-|-------|-----------------|
-| **Matched** | Pair approved; scheduling in progress |
-| **PickTimeFailed** | Could not align calendars |
-| **ContactExchanged** | Contact info shared |
-| **Dated** | Successful date logged |
-| **Failed** | Refused or expired |
+Chatbot routing uses **user** status (and `activePool`, `matchId`)—see [chatbot-routing.md](chatbot-routing.md).
 
-Internal automation priority tiers (who gets rematched first) are defined in [../architecture/operations/matching-priority.md](../architecture/operations/matching-priority.md).
+---
+
+## Match workflow status (`matchings`)
+
+Terminal and in-progress values from `MatchStatusValues` + `CompletedMatchStatusValues`.
+
+### In progress (non-terminal)
+
+```mermaid
+flowchart LR
+  Matched --> Poster[Making Poster / Poster Done]
+  Poster --> Email[EmailSent 1/2 · 2/2]
+  Email --> Time[TimeScheduled 1/2 · 2/2]
+  Time --> Place[WaitingForPlace]
+  Place --> Confirm[ConfirmationEmailSent 1/2 · 2/2]
+  Confirm --> Approved[Match Approved 1/2 · 2/2]
+  Matched --> Holding[Holding]
+```
+
+### Terminal outcomes
+
+| Status | Category |
+|--------|----------|
+| `ContactExchanged` | Success — contact shared |
+| `Dated` | Success — date completed |
+| `DateCancelled` | Failed — cancelled after scheduling |
+| `PickTimeFailed` | Failed — scheduling failed |
+| `Failed` | Failed — generic |
+| `Failed - Refused` | Failed — user refused |
+| `Failed - Expired` | Failed — timed out |
+
+ENG-1030 priority tiers reference several **terminal** match outcomes (`PickTimeFailed`, `Failed - Expired`, `DateCancelled`)—see [../architecture/operations/matching-priority.md](../architecture/operations/matching-priority.md).
+
+## Related
+
+- [data-model.md](data-model.md) — ER view  
+- [platform-topology.md](platform-topology.md) — services  

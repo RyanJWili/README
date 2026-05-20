@@ -13,6 +13,8 @@ Product and engineering specs **authored for this hub**—not raw Notion exports
 
 ## Chatbot
 
+Index: [chatbot/README.md](chatbot/README.md)
+
 | Document | Description |
 |----------|-------------|
 | [chatbot/system-overview.md](chatbot/system-overview.md) | Production chatbot architecture |

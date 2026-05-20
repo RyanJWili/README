@@ -4,6 +4,8 @@ Long-form strategy distilled into readable summaries.
 
 ## Matchmaking
 
+Index: [matchmaking/README.md](matchmaking/README.md)
+
 | Document | Description |
 |----------|-------------|
 | [matchmaking/engine-3x-summary.md](matchmaking/engine-3x-summary.md) | Matchmaking Engine 3.x vision |

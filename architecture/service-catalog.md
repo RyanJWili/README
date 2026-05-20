@@ -1,6 +1,6 @@
 # Service catalog
 
-One-line ownership map. Deep dives: [platform-overview.md](platform-overview.md), [../repos/README.md](../repos/README.md).
+One-line ownership map. Deep dives: [services/README.md](services/README.md). Overview: [platform-overview.md](platform-overview.md). GitHub links: [../repos/README.md](../repos/README.md).
 
 ## Core
 

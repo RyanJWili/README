@@ -38,5 +38,7 @@ Application services build container images in their own repos; `ditto-infra` de
 ## Deeper reading
 
 - [infisical-gke.md](infisical-gke.md) — secret injection pattern on GKE  
+- [specs/bootstrap-infra-manager.md](specs/bootstrap-infra-manager.md) — one-time GCP bootstrap  
+- [specs/infisical-injector-gaps.md](specs/infisical-injector-gaps.md) — injector auth fixes  
 - [../architecture/platform-overview.md](../architecture/platform-overview.md) — application topology  
 - Upstream source: `ditto-infra/docs/architecture.md` in the infra repository  

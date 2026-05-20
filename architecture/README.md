@@ -21,6 +21,9 @@ How Ditto is structured as a product and as a set of services.
 | [services/profile-analysis-service.md](services/profile-analysis-service.md) | Scoring and Restate workflows |
 | [services/prompt-manager-backend.md](services/prompt-manager-backend.md) | Prompt CMS |
 | [services/ditto-internal-frontend.md](services/ditto-internal-frontend.md) | Admin dashboard |
+| [services/proj-coach-schemas.md](services/proj-coach-schemas.md) | Shared MongoDB schemas |
+| [services/delayed-task-service.md](services/delayed-task-service.md) | Scheduled / approval-queue jobs |
+| [services/realtime-ws.md](services/realtime-ws.md) | User and admin Socket.IO |
 
 ## Operations
 

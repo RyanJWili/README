@@ -19,6 +19,22 @@ Explores how external **agentic** workflows could read Ditto user state, propose
 
 OpenClaw experiments should respect multi-head semantics (likelihood, intensity, chemistry, readiness)—see [../../reference/matchmaking/engine-3x-summary.md](../../reference/matchmaking/engine-3x-summary.md).
 
+## Phased integration (aligned with implementation plan)
+
+| Phase | OpenClaw role |
+|-------|----------------|
+| 0 | Read decision traces; no automation |
+| 1 | Match reviewer agent + coach review workflow |
+| 6+ | Policy skills on calibrated head outputs |
+
+Detail: [../../reference/matchmaking/implementation-plan-summary.md](../../reference/matchmaking/implementation-plan-summary.md).
+
+## Runtime touchpoints
+
+- **Restate** — scoring rounds, autofilter (`profile-analysis-service`)  
+- **MongoDB** — profiles, matches, outcomes  
+- **Internal dashboard** — human approval before production pairs ship  
+
 ## Production boundary
 
 Agents may **recommend**; production matching still flows through audited pipelines and ops tools unless explicitly approved for automation.
